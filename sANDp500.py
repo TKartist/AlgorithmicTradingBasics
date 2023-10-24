@@ -15,4 +15,8 @@ import math
 # importing stock info (doesn't reflect real-time change as it is a paid function)
 # save s&p500 csv file in pandas dataframe
 stocks = pd.read_csv("sp_500_stocks.csv")
-print(type(stocks))
+# print(type(stocks))
+
+# iex cloud api to gather all financial data
+# we are going to use sandbox API and like most APIs we need some form of authentification to pull data from API
+# This sandbox API usage exists for test purposes before using scripts IRL
