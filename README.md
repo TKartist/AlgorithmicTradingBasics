@@ -19,3 +19,6 @@ Recording the progress:
 - Numpy : Numerical computing library which is known for its fast execution speed as it is actually a C/C++ module. So it is used a lot in the finance sector.
 - Installed pandas library and all other libraries (i.e. requests, xlsxwriter)
 - Collected sp_500_stocks.csv file (static data)
+
+To get the secrets.py file for API token, you can download the file on the following link:
+http://nickmccullum.com/algorithmic-trading-python/secrets.py
