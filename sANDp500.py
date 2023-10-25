@@ -5,9 +5,9 @@ import pandas as pd  # panel datas -> pandas, it handles tabular data
 print("Pandas's version is:", pd.__version__)
 # checking pandas version
 
-import requests as req  # for http requests
+import requests  # for http requests
 
-print("Request's version is:", req.__version__)
+print("Request's version is:", requests.__version__)
 # checking requests version
 
 import xlsxwriter as xls  # cells like excel
@@ -25,4 +25,22 @@ print(type(stocks))
 # we import API token
 from Secrets import IEX_CLOUD_API_TOKEN
 
+# API call for single stock (Apple in this case)
+
+symbol = 'AAPL';
+# all api have different formats and our IEX_CLOUD_API we use base url and depending on what we want, we can change the endpoint and get info we want
+# we used fstring to append symbol to our url
+api_url = f'https://sandbox.iexapis.com/stable/stock/{symbol}/quote?token={IEX_CLOUD_API_TOKEN}'
+#end point for stock price and market capitalization -> we use quote endpoint for both
+
+print(api_url);
+#example of fstring
+adjective = "superb"
+string = f"my life is {adjective}"
+print(string);
+
+# our first request
+data = requests.get(api_url);
+#to view the data
+print(data.status_code);
 
