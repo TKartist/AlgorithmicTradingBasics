@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd  # panel datas -> pandas, it handles tabular data
 
@@ -22,6 +23,6 @@ print(type(stocks))
 # This sandbox API usage exists for test purposes before using scripts IRL
 # always put secrets.py in gitignore (for safety)
 # we import API token
-from secrets import IEX_CLOUD_API_TOKEN
+from Secrets import IEX_CLOUD_API_TOKEN
 
-print(IEX_CLOUD_API_TOKEN)
+
