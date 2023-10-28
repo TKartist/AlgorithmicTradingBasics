@@ -1,6 +1,9 @@
 
 import numpy as np
 import pandas as pd  # panel datas -> pandas, it handles tabular data
+import os
+
+os.environ['IEX_SANDBOX'] = 'enable'
 
 print("Pandas's version is:", pd.__version__)
 # checking pandas version
