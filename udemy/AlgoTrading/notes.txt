@@ -1,0 +1,13 @@
+starting anaconda virtual environment:
+- Why? : To reduce version conflicts caused due to dependencies of some libraries.
+- How? : Create a new environment by "conda create --name `name of environment` python=`version of python`"; i.e. "conda create --name quant python=3.11"
+Then to activate the environment we can just use "conda activate `name of environment`"; so "conda activate quant" in this case.
+
+To start anaconda navigator: "anaconda-navigator";
+
+To see the existing conda virtual environments: "conda info --envs"
+
+little tip -> in Ubuntu we need to run "active `name of environment`" to start the environment.
+Also using python 3.8 to avoid dependencies
+
+Using yfinance API instead of panda_datareader(deprecated). (installed)
