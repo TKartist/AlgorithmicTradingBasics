@@ -11,3 +11,6 @@ little tip -> in Ubuntu we need to run "active `name of environment`" to start t
 Also using python 3.8 to avoid dependencies
 
 Using yfinance API instead of panda_datareader(deprecated). (installed)
+
+What is "Adjusted close"?
+Adjusted close is the closing price after adjustments for all applicable splits and dividend distributions. Data is adjusted using appropriate split and dividend multipliers
