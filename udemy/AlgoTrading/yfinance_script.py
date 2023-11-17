@@ -83,3 +83,15 @@ for ticker in stocks:
 print(
     close_prices["AMZN"]
 )  # prints adjusted closing price of Amazon with date as index
+
+print(
+    close_prices["MSFT"]
+)  # prints adjusted closing price of Amazon with date as index
+
+print(
+    close_prices["INTC"]
+)  # prints adjusted closing price of Amazon with date as index
+
+print(
+    close_prices["GOOG"]
+)  # prints adjusted closing price of Amazon with date as index
