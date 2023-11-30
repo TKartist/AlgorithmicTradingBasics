@@ -18,4 +18,7 @@ all_tickers = ["AAPL", "MSFT", "CSCO", "AMZN", "GOOG", "FB"]
 close_price = pd.DataFrame()
 
 for ticker in all_tickers:
-    starttime = time.time()
+    ts = TimeSeries(key=api_key, output_format="pandas")
+    data = ts.get_intraday(symbol=ticker, interval="1min", outputsize="compact")[0]
+    data.columns = ["open", "high", "low", "close", "volume"]
+    close_price[ticker] = data["close"]
