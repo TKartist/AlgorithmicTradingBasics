@@ -3,12 +3,7 @@ from csv import reader
 
 # changes owned position info, how much made, how much left
 def updateTuple(sold, profit, originalTuple):
-    return (
-        originalTuple[0] - sold,
-        originalTuple[1],
-        originalTuple[2] + profit,
-        originalTuple[3],
-    )
+    return (originalTuple[0] - sold, originalTuple[1], originalTuple[2] + profit)
 
 
 def calculate_optimal_profit():
@@ -19,19 +14,19 @@ def calculate_optimal_profit():
         transactions = []
         maxPrice = 0
         currentPosition = 0
-        boughtPosition = 0
         for trade in csv:
             volume = int(trade[2])
             price = float(trade[1])
             # counts how many buy operation to pop
             buyCount = 0
             counter = len(buys) - 1
+            if currentPosition <= 0 or currentPosition > 100000:
+                print(buys)
             if volume > 0:  # buy transaction
                 # only keep the best (cheapest) 100'000 positions
-                if (boughtPosition + volume) <= 100000:
-                    buys.append((volume, price, 0, volume))
+                if (currentPosition + volume) <= 100000:
+                    buys.append((volume, price, 0))
                     currentPosition += volume
-                    boughtPosition += volume
                     if price > maxPrice:
                         maxPrice = price
                 else:
@@ -40,22 +35,15 @@ def calculate_optimal_profit():
                         buys.sort(key=lambda t: (-t[2], t[1]))
                         while counter >= 0:
                             if buys[counter][1] < price:
-                                buys = buyCopy.copy()
+                                buys = buyCopy
                                 break
-                            if buys[counter][2] > 0:
-                                counter -= 1
-                                continue
                             popped = buys.pop()
-                            currentPosition -= popped[3]
-                            boughtPosition -= popped[3]
+                            currentPosition -= popped[0]
                             counter -= 1
-                            if (boughtPosition + volume) <= 100000:
+                            if (currentPosition + volume) < 100000:
                                 maxPrice = buys[len(buys) - 1][1]
-                                if price > maxPrice:
-                                    maxPrice = price
-                                buys.append((volume, price, 0, volume))
+                                buys.append((volume, price, 0))
                                 currentPosition += volume
-                                boughtPosition += volume
                                 break
                     else:
                         continue
@@ -95,9 +83,7 @@ def calculate_optimal_profit():
                     break
             # pop sold out (valid) buys and put it into transactions
             for i in range(buyCount):
-                alpha = buys.pop()
-                boughtPosition = boughtPosition - alpha[3]
-                transactions.append(alpha)
+                transactions.append(buys.pop())
         profit = 0
         for transaction in transactions:
             profit += transaction[2]
