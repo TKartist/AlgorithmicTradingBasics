@@ -1,0 +1,1 @@
+ONE_MIN_CANDLES = "/historical-chart/1min"

@@ -1,2 +1,6 @@
 __pycache__
 Secrets.py
+.env
+agricol/
+alberBlanc/
+fmp_data_collector/
