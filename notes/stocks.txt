@@ -1,0 +1,2 @@
+measuring the risk of stock - volatility:
+statistical measure of the dispersion of returns for a given security which is = amount of uncertainty(risk) about the size of changes in the value of a given security.
