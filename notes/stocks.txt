@@ -1,2 +1,7 @@
 measuring the risk of stock - volatility:
 statistical measure of the dispersion of returns for a given security which is = amount of uncertainty(risk) about the size of changes in the value of a given security.
+volatility is measured with standard deviation or variance between returns of the same security
+
+HIGHER VOLATILITY = HIGHER RISK
+
+we can use the Capital Asset Pricing Model (CAPM) with the beta value to approximate volatility

@@ -1,0 +1,18 @@
+gold, oil, natural gas, and etc. are commodities (complicated to invest in commodities)
+WHY? -> how are you gonna store a barrel of oil by yourself
+     -> so instead of buying commodity futures, you can instead buy stock of a company which are related, i.e. gold and gold mining companies.
+        May not be directly correlated but will show a positive correlation.
+
+Commodities are extremely volatile => so we use FUTURES!!!
+
+Futures are made in an attempt by producers and suppliers of commodities to AVOID MARKET VOLATILITY
+- Essentially they negotiate the price of a given commodity in the future (you decide to sell something at a certain price at a certain date. Basically a promise)
+
+i.e. airlines are strongly effected by oil price, so they use oil futures to protect them from rising oil prices.
+
+Future market => i.e. New York Mercantile Exchange
+
+Commodity prices typically rise when inflation is accelerating (this is why commodities such as oil or gold usually offer protection from the effects of inflation)
+- i guess it is because a tangible object such as commodity has a fixed "value" regardless of the currency power unlike stocks which are shares of futures earnings which
+is susceptible to inflation.
+- as it is less susceptible to rising inflation, we can include it in our portfolio with stocks
