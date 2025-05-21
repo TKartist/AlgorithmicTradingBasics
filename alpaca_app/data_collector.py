@@ -23,41 +23,27 @@ class TradingService:
             raise ValueError("API_KEY and/or API_SECRET not set in environment.")
         return StockHistoricalDataClient(api_key, api_secret)
 
-    def get_account_info(self):
-        return self.client.get_account()
-
-    def collect_historical_data_min(self, symbols, start, end):
+    def wrap_request(self, symbols, start, end, frame):
+        if frame == "h":
+            tf = TimeFrame.Hour
+        elif frame == "m":
+            tf = TimeFrame.Minute
+        elif frame == "d":
+            tf = TimeFrame.Day
+        else:
+            return None
+        
         request_params = StockBarsRequest(
             symbol_or_symbols=symbols,
             timeframe=TimeFrame.Minute,
             start=start,
             end=end
         )
+        return request_params
 
-        bars = self.client.get_stock_bars(request_params)
-
-        return bars
-
-    def collect_historical_data_day(self, symbols, start, end):
-        request_params = StockBarsRequest(
-            symbol_or_symbols=symbols,
-            timeframe=TimeFrame.Day,
-            start=start,
-            end=end
-        )
-
-        bars = self.client.get_stock_bars(request_params)
-
-        return bars
-    
-    def collect_historical_data_hour(self, symbols, start, end):
-        request_params = StockBarsRequest(
-            symbol_or_symbols=symbols,
-            timeframe=TimeFrame.Hour,
-            start=start,
-            end=end
-        )
-
-        bars = self.client.get_stock_bars(request_params)
-
-        return bars
+    def collect_historical_data(self, request_params):
+        try:
+            bars = self.client.get_stock_bars(request_params)
+            return bars
+        except Exception as e:
+            print(f"Error while pulling data from Alpaca: {e}")
