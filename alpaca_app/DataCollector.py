@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 
 
-class TradingService:
+class DataCollector:
     def __init__(self):
         self._load_env()
         self.client = self._initiate_client()
