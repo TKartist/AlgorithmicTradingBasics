@@ -36,17 +36,16 @@ class DataCollector:
             "symbol" : symbol,
             "interval" : frame
         }
-        print(start)
-        print(end)
         while start_ms < end_ms:
             self.call_points.append(start_ms)
             start_ms += 60000000
-        
+        self.call_points.append(end_ms)
         self.run_spot_api_calls()
     
 
     def get_data_df(self):
         df = pd.DataFrame(self.data, columns=self.columns)
+        df.to_csv("bar_info.csv", index=False)
         return df
 
 

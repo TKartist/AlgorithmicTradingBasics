@@ -9,8 +9,8 @@ def main():
     end = datetime(2025, 5, 22, 17, 0, 0)
     dataCollector = DataCollector()
     dataCollector.collect_historical_data(start, end, "BTCUSDT", "1m")
-    df = dataCollector.get_data_df()
-    df.to_csv("bar_info.csv", index=False)
+    dataCollector.get_data_df()
+    # df.to_csv("bar_info.csv", index=False)
     
 
 if __name__ == "__main__":

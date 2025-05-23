@@ -6,3 +6,4 @@ alberBlanc/
 fmp_data_collector/
 binance_app/bar_info.csv
 */__pycache__
+binance_app/bar_info_2.csv
