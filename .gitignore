@@ -4,3 +4,5 @@ Secrets.py
 agricol/
 alberBlanc/
 fmp_data_collector/
+binance_app/bar_info.csv
+*/__pycache__
