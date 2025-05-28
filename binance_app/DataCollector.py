@@ -41,7 +41,37 @@ class DataCollector:
             start_ms += 60000000
         self.call_points.append(end_ms)
         self.run_spot_api_calls()
-    
+
+
+    def calculate_rsi(self, prices, period=14):
+        delta = prices.diff()
+
+        gain = delta.clip(lower=0)
+        loss = -delta.clip(upper=0)
+
+        avg_gain = gain.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+        avg_loss = loss.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+
+        rs = avg_gain / avg_loss
+        rsi = 100 - (100 / (1 + rs))
+
+        return rsi
+
+    def calculate_atr(self, df, period=14):
+        high = df['High']
+        low = df['Low']
+        close = df['Close']
+
+        tr = pd.concat([
+            high - low,
+            (high - close.shift()).abs(),
+            (low - close.shift()).abs()
+        ], axis=1).max(axis=1)
+
+        atr = tr.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+        
+        return atr
+
 
     def get_data_df(self):
         df = pd.DataFrame(self.data, columns=self.columns)

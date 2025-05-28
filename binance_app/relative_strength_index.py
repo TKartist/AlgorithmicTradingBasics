@@ -16,6 +16,22 @@ def calculate_rsi(prices, period=14):
     return rsi
 
 
+def calculate_atr(df, period=14):
+    high = df['High']
+    low = df['Low']
+    close = df['Close']
+
+    tr = pd.concat([
+        high - low,
+        (high - close.shift()).abs(),
+        (low - close.shift()).abs()
+    ], axis=1).max(axis=1)
+
+    atr = tr.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
+    
+    return atr
+
+
 def categorize(x):
     if x > 66:
         return "high"
