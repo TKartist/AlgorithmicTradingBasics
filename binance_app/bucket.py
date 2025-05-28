@@ -8,7 +8,7 @@ df["close_ratio"] = df["close"].pct_change()
 df = df.fillna(0)
 
 data = df["close_ratio"].to_numpy()
-bins = np.linspace(-0.2, 0.2, 21)  # 21 edges = 20 bins
+bins = np.linspace(-0.2, 0.2, 30)  # 21 edges = 20 bins
 
 # Get counts per bin (density=False = raw counts)
 counts, bin_edges = np.histogram(data, bins=bins, density=False)
