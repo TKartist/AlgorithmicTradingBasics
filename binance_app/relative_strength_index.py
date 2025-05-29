@@ -16,32 +16,22 @@ def calculate_rsi(prices, period=14):
     return rsi
 
 
-def calculate_atr(df, period=14):
-    high = df['High']
-    low = df['Low']
-    close = df['Close']
-
-    tr = pd.concat([
-        high - low,
-        (high - close.shift()).abs(),
-        (low - close.shift()).abs()
-    ], axis=1).max(axis=1)
-
-    atr = tr.ewm(alpha=1/period, min_periods=period, adjust=False).mean()
-    
-    return atr
-
-
 def categorize(x):
-    if x > 66:
+    if x > 80:
         return "high"
-    elif x < 34:
-        return "low"
-    return "neutral"
+    elif x > 60:
+        return "good"
+    elif x > 40:
+        return "neutral"
+    elif x > 20:
+        return "neutral"
+    return "low"
 
 color_map = {
     'low': 'blue',
+    'mid' : 'yellow',
     'neutral': 'orange',
+    'good' : 'black',
     'high': 'green'
 }
 
@@ -51,4 +41,18 @@ df = pd.read_csv("bar_info.csv")
 rsi = calculate_rsi(df["close"])
 df["rsi_val"] = rsi
 df["rsi_val"] = df["rsi_val"].map(categorize)
+df = df[:100]
+print(len(df))
+
+colors = df["rsi_val"].map(color_map)
+print(df.index)
+
+plt.plot(df["open_time"], df['close'], color='gray', linestyle='-', marker='o')
+
+# Recolor markers individually
+for i in range(len(df)):
+    plt.plot(df["open_time"][i], df['close'][i], marker='o', color=colors[i], markersize=8)
+plt.title("Bar Chart with Color Mapping")
+plt.xticks(rotation=90)
+plt.savefig("rsi_mapped_prices.png", dpi=500)
 df.to_csv("bar_info3.csv")

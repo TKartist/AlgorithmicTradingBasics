@@ -75,6 +75,9 @@ class DataCollector:
 
     def get_data_df(self):
         df = pd.DataFrame(self.data, columns=self.columns)
+        rsi = self.calculate_rsi(df["close"])
+        df["rsi"] = rsi
+        df["atr"] = self.calculate_atr(df)
         df.to_csv("bar_info.csv", index=False)
         return df
 
