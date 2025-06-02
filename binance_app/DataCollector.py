@@ -12,7 +12,7 @@ class DataCollector:
         self.call_points = []
         self.params = {}
         self.data = []
-        self.columns = ["open_time", "open", "close", "high", "low", "close", "vol", "close_time", "quote_volume", "trade_count", "taker_buy_base_asset_volume", "taker_buy_quote_asset_volume"]
+        self.columns = ["open_time", "open", "high", "low", "close", "vol", "close_time", "quote_volume", "num_trades", "taker_buy_base_volume", "taker_buy_quote_volume", "ignore"]
 
     def run_spot_api_calls(self):
         for i in range(len(self.call_points) - 1):
@@ -75,9 +75,6 @@ class DataCollector:
 
     def get_data_df(self):
         df = pd.DataFrame(self.data, columns=self.columns)
-        rsi = self.calculate_rsi(df["close"])
-        df["rsi"] = rsi
-        df["atr"] = self.calculate_atr(df)
         df.to_csv("bar_info.csv", index=False)
         return df
 

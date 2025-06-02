@@ -8,3 +8,4 @@ binance_app/bar_info.csv
 */__pycache__
 binance_app/bar_info_2.csv
 binance/bar_info3.csv
+binance/bar_info_transformed.csv
