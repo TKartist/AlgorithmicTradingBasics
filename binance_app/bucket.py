@@ -3,7 +3,7 @@ from scipy.stats import gaussian_kde
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("bar_info.csv", index_col="open_time")
+df = pd.read_csv("bar_info_transformed.csv", index_col="open_time")
 
 
 '''
@@ -29,6 +29,10 @@ def transform_data(df):
     print("GOT HERE")
     return data
 
-x = transform_data(df)
-df_t = pd.DataFrame(x)
-df_t.to_csv("bar_info_transformed.csv")
+
+print(f"maximum head pct: {df['head'].max()}")
+print(f"minimum head pct: {df['head'].min()}")
+print(f"maximum tail pct: {df['tail'].max()}")
+print(f"minimum tail pct: {df['tail'].min()}")
+print(f"maximum body pct: {df['body'].max()}")
+print(f"minimum body pct: {df['body'].min()}")
