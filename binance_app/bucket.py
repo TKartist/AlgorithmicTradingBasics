@@ -32,7 +32,15 @@ def transform_data(df):
 
 print(f"maximum head pct: {df['head'].max()}")
 print(f"minimum head pct: {df['head'].min()}")
-print(f"maximum tail pct: {df['tail'].max()}")
-print(f"minimum tail pct: {df['tail'].min()}")
-print(f"maximum body pct: {df['body'].max()}")
-print(f"minimum body pct: {df['body'].min()}")
+
+bounds = np.linspace(df["head"].min(), df["head"].max(), 500)
+counts = []
+index = []
+for i in range(len(bounds) - 1):
+    index.append(i)
+    counts.append(df[(df['head'] > bounds[i]) & (df['head'] <= bounds[i + 1])].shape[0])
+
+
+plt.figure(figsize=(16, 10))
+plt.plot(index, counts)
+plt.savefig("density.png", dpi=500)
